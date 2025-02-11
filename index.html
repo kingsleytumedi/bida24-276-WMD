@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Facebook-like Website</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #3b5998;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        /* Main Layout Styles */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #fff;
+            width: 250px;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h2 {
+            color: #3b5998;
+            cursor: pointer;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            color: #333;
+        }
+
+        .post {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none; /* Hidden initially */
+        }
+
+        .post.expand img {
+            display: block; /* Show when post is expanded */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3b5998;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Design - Adjusting Layout for Smaller Screens */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                padding: 10px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+
+        /* Responsive Design for very small screens (e.g., phones in portrait mode) */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .sidebar ul li {
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Social Network</h1>
+    </header>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <img src="https://picsum.photos/100/100" alt="Profile Picture" class="profile-picture">
+            <h2 onclick="toggleMenu()">Menu</h2>
+            <ul id="menu">
+                <li onclick="alert('Navigating to Home')">Home</li>
+                <li onclick="alert('Navigating to Messages')">Messages</li>
+                <li onclick="alert('Navigating to Notifications')">Notifications</li>
+                <li onclick="alert('Navigating to Friends')">Friends</li>
+                <li onclick="alert('Navigating to Settings')">Settings</li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2>Welcome to Your News Feed!</h2>
+            <div class="post" onclick="togglePost(this)">
+                <h3>User 1's Post</h3>
+                <p>This is a random post with a picture!</p>
+                <img src="https://picsum.photos/800/400" alt="Random Image">
+            </div>
+
+            <div class="post" onclick="togglePost(this)">
+                <h3>User 2's Post</h3>
+                <p>Another random post with a cool picture.</p>
+                <img src="https://picsum.photos/800/400" alt="Random Image">
+            </div>
+
+            <div class="post" onclick="togglePost(this)">
+                <h3>User 3's Post</h3>
+                <p>Check out this awesome view!</p>
+                <img src="https://picsum.photos/800/400" alt="Random Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Social Network</p>
+    </footer>
+
+    <script>
+        // Toggle menu visibility in the sidebar
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+
+        // Toggle post image visibility (expand post when clicked)
+        function togglePost(postElement) {
+            postElement.classList.toggle('expand');
+        }
+    </script>
+</body>
+</html>
